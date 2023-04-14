@@ -42,7 +42,7 @@ async def on_message(message):
     # Converts the text message into lower case letter.
     temp_message = message.content.lower()
     
-    if temp_message.startswith("$connect"):
+    if temp_message.startswith("$play"):
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5','options': '-vn -filter:a "volume=0.25"'}
         YDL_OPTIONS = {
         'format': 'bestaudio',
