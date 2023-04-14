@@ -63,7 +63,7 @@ async def on_message(message):
         with YoutubeDL(YDL_OPTIONS) as ydl:
             info = ydl.extract_info(f"ytsearch:{str(search)}",download=False)['entries'][0]
         source = info['url']
-        await message.channel.send("Connected!")           
+        await message.channel.send(f"Connected!\nPlease proceed to {search} - music channel.")           
         audio = discord.FFmpegPCMAudio(source,**FFMPEG_OPTIONS,executable="C:/Program Files/ffmpeg/bin/ffmpeg.exe",)
         guild = client.get_guild(YOUR_GUILD_ID)
         voice_chnl = await guild.create_voice_channel(name = f'{search} - music')
