@@ -87,6 +87,7 @@ async def on_message(message):
           
     # Help response
     elif temp_message.startswith("$reminder"):
+        message.channel.send("Reminder set!")
         reminders[int(time.time()) + 60*int(temp_message.split()[1])] = message
 
     elif temp_message.startswith("$help"):
