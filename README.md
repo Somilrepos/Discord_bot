@@ -8,6 +8,10 @@
 
 >$play Animals by Maroon5
 
+```$pause``` -> Pauses the music being played.
+
+```$resume``` -> Resumes the music paused.
+
 ```$reminder``` -> Sets a reminder.  ***Needs 1 argument, message is optional***
 
 >$reminder 2 It's time to sleep.
