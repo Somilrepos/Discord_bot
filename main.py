@@ -109,3 +109,5 @@ async def on_message(message):
         )
         response = response['choices'][0]['text'][response['choices'][0]['text'].find('\n')+2:]
         await message.channel.send(response)
+
+        client.run("TOKEN")  
