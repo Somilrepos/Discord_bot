@@ -4,7 +4,7 @@ from yt_dlp import YoutubeDL
 import time
 from discord.ext import tasks
 
-global vc
+global vc # Voice_channel
 reminders = {}
 
 openai.api_key = "TOKEN"
@@ -71,27 +71,30 @@ async def on_message(message):
         voice_protocol.play(audio)
         vc = voice_protocol
         
-    # Pauses music   
+    # Pauses music.   
     elif temp_message.startswith("$pause"):
         if vc:
           vc.pause()
         else:
           message.channel.send("There is no music playing.")
     
-    # Resumes music
+    # Resumes music.
     elif temp_message.startswith("$resume"):
         if vc:
           vc.resume()
         else:
           message.channel.send("There is no music playing.")
           
-    # Help response
+    # Set Reminders.
     elif temp_message.startswith("$reminder"):
         message.channel.send("Reminder set!")
+        
+        # Adds the reminder to the reminder queue.
         reminders[int(time.time()) + 60*int(temp_message.split()[1])] = message
 
+    # Gives an introduction to commands.
     elif temp_message.startswith("$help"):
-        await message.channel.send("Hey so you asked for help.\n\nHere just use '$' symbol before your question to have ChatGPT3 reply to it.")
+        await message.channel.send("Hey so you asked for help.\n\n```$help``` -> lists all commands.\n```$play``` -> Plays your desired music.  ***Needs 1 argument***\n> $play Animals by Maroon5\n```$pause``` -> Pauses the music being played.\n```$resume``` -> Resumes the music paused.\n```$reminder``` -> Sets a reminder.  ***Needs 1 argument, message is optional***\n > $ reminder 2 It's time to sleep.\n\n> {after 2 minutes}\n> Hey User, It's time to sleep.\n```$``` -> Let you talk to ChatGPT3.  ***Enter your query after the dollar sign***\n> $Say hi to everyone.\n\n> Hi everyone! It's nice to be here.")
         
     # Helps to chat with open ai.
     elif temp_message.startswith("$"):
