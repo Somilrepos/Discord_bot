@@ -102,7 +102,6 @@ async def on_message(message):
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0.6,
-        stop=[" Human:", " AI:"]
         )
         response = response['choices'][0]['text'][response['choices'][0]['text'].find('\n')+2:]
         await message.channel.send(response)
