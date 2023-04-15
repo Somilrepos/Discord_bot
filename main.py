@@ -14,8 +14,6 @@ intents.message_content = True
 intents.voice_states = True
 client = discord.Client(intents = intents)
 
-client.run("TOKEN")
-
 # Checks the set reminders.
 @tasks.loop(minutes=1)
 async def check_function():
